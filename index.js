@@ -18,7 +18,7 @@ const botOwners = ['1701653200', '1708427708']; // Reemplaza con los ID de usuar
 const bot = new TelegramBot(botToken, { polling: true });
 
 const loteriaDataFile = 'loteriaData.json';
-const tiempoEsperaEntreJuegos = 60 * 60 * 1000; // 1 minuto en milisegundos
+const tiempoEsperaEntreJuegos = 10 * 60 * 1000; // 1 minuto en milisegundos
 
 // Cargar o inicializar datos
 let loteriaData = {};
@@ -79,7 +79,7 @@ bot.onText(/\/loteria (.+)/, (msg, match) => {
     fs.writeFileSync(loteriaDataFile, JSON.stringify(loteriaData));
   
     // Responder al usuario
-    bot.sendMessage(chatId, `_¡El número ganador es ${randomNumber} 🥕! ¡Has ganado *${points}* punto(s)-Peko!_`, {parse_mode: 'Markdown' });
+    bot.sendMessage(chatId, `¡El número ganador es ${randomNumber} 🥕! ¡Has ganado *${points}* punto(s)-Peko!`, {parse_mode: 'Markdown' });
   });
 
 // Comando /ranking
